@@ -27,13 +27,16 @@ public class TodoService {
     public TodoResponse createTodo(TodoCreateRequest request) {
         
         User user = userRepository.findById(request.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+        Category category = categoryRepository.findById(request.getCategoryId()).orElseThrow(() -> new RuntimeException("Category not found"));
+
 
         Todo todo = new Todo();
         todo.setTitle(request.getTitle());
         todo.setDescription(request.getDescription());
         todo.setStatus(request.getStatus());
         todo.setUser(user);
-    
+        todo.setCategory(category);
+
         Todo saved = todoRepository.save(todo);
 
         // DTO üzerinden return etmek, entitiy yi dünyaya açmamak anlamına gelir, API response u kontrol altında tutulmuş olur.
@@ -41,6 +44,7 @@ public class TodoService {
             saved.getId(),
             saved.getTitle(),
             saved.getDescription(),
-            saved.getStatus());
+            saved.getStatus(),
+            saved.getCategory().getId());
     }
 }

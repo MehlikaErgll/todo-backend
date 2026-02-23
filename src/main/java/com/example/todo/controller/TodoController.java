@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.todo.service.TodoService;;
 
 @RestController
-@RequestMapping("/todos")
+@RequestMapping("/api/todos")
 public class TodoController {
 
     private final TodoService todoService;

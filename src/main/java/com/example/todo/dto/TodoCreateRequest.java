@@ -9,6 +9,7 @@ public class TodoCreateRequest {
     private String description;
     private String status;
     private Long userId;
+    private Long categoryId;
     
 }
 

@@ -11,5 +11,5 @@ public class TodoResponse {
     private String title;
     private String description;
     private String status;
-    
+    private Long categoryId;
 }
